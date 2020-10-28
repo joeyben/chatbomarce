@@ -1,0 +1,10 @@
+.login-box{
+    margin-top: -200px;
+}
+footer{
+    .col-xl-6{
+        @media (max-width: 1200px) {
+            width: 50%;
+        }
+    }
+}
