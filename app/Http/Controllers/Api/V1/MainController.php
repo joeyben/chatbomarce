@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
-class HomeController extends Controller
+
+class MainController extends APIController
 {
     /**
      * Create a new controller instance.
@@ -11,18 +12,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
-    {
-        return view('dashboard');
-    }
 
     /**
      * Show the application dashboard.
@@ -32,7 +23,7 @@ class HomeController extends Controller
     public function infos()
     {
         try {
-            return $this->responseJson("yo yo yo ");
+            return "yo yo yo ";
         } catch (\Exception $e) {
             return $this->respondWithError($e);
         }
