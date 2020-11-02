@@ -40,7 +40,7 @@ class MessagesRepository extends BaseRepository
     }
 
     public function getMessages(){
-        return $this->query()->get();
+        return $this->query()->orderBy('created_at', 'desc')->get();
     }
 
     public function getMessagesByWhatsapp($whatsappnr){

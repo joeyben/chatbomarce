@@ -7,7 +7,7 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">Messages</h3>
+                                <h3 class="mb-0">Nachrichten</h3>
                             </div>
                             <!--<div class="col text-right">
                               <a href="#!" class="btn btn-sm btn-primary">See all</a>
@@ -20,8 +20,8 @@
                             <thead class="thead-light">
                             <tr>
                                 <th scope="col">Whatsappnr</th>
-                                <th scope="col">Message</th>
-                                <th scope="col">Date</th>
+                                <th scope="col">Nachricht</th>
+                                <th scope="col">Datum</th>
                             </tr>
                             </thead>
                             <tbody>
