@@ -2,24 +2,43 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Repository\MessagesRepository;
+use App\Repository\WhatsappUserRepository;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
 use Twilio\Rest\Client;
 
 class ChatBotController extends APIController
 {
+    private $whatsappUserRepository;
+    private $messageRepository;
+    /**
+     * ChatBotController constructor.
+     */
+    public function __construct(WhatsappUserRepository $whatsappUserRepository, MessagesRepository $messageRepository)
+    {
+        $this->whatsappUserRepository = $whatsappUserRepository;
+        $this->messageRepository = $messageRepository;
+    }
+    //$out = new \Symfony\Component\Console\Output\ConsoleOutput();
+    //$out->writeln($this->whatsappUserRepository->getUserByWhatsapp($whatsappNr));
     public function listenToReplies(Request $request)
     {
+        $whatsappNr = $request->input('From');
+        $message = $request->input('Body');
 
-        $from = $request->input('From');
-        $body = $request->input('Body');
-        
+        //add new user if not exist
+        $userStored = $this->whatsappUserRepository->addUser($whatsappNr);
+
+        $response = $this->whatsappUserRepository->handleMessages($message, $whatsappNr);
+
+        $this->messageRepository->addMessage($message, $whatsappNr);
         try {
-            $message = " My name is Sven \n";
-            $this->sendWhatsAppMessage($message, $from);
+            $this->sendWhatsAppMessage($response, $whatsappNr);
+
         } catch (RequestException $th) {
             $response = json_decode($th->getResponse()->getBody());
-            $this->sendWhatsAppMessage($response->message, $from);
+            $this->sendWhatsAppMessage($response->message, $whatsappNr);
         }
         return;
     }

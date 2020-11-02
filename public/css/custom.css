@@ -1,0 +1,18 @@
+.login-box {
+  margin-top: -200px;
+}
+
+@media (max-width: 1200px) {
+  footer .col-xl-6 {
+    width: 50%;
+  }
+}
+
+.main-content .navbar-top {
+  position: relative;
+}
+
+.username span {
+  color: #525f7f;
+}
+

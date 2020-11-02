@@ -43,6 +43,8 @@ class WhatsappUserRepository extends BaseRepository
     public function handleMessages($message, $whatsappNr)
     {
         $privacy = $this->handlePrivacyCheck($whatsappNr);
+        $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+        $out->writeln($privacy);
         if($privacy === 0){
             return "sorry,bye";
         } elseif ($privacy === 1) {
