@@ -82,6 +82,15 @@
                     <a class="nav-link" href="{{ route('home') }}">
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
+
+                    <a class="nav-link" href="{{ route('messages') }}">
+                        <i class="far fa-envelope text-primary"></i> {{ __('Messages') }}
+                    </a>
+
+                    <a class="nav-link" href="{{ route('users') }}">
+                        <i class="fas fa-user text-primary"></i> {{ __('Users') }}
+                    </a>
+
                 </li>
                 <li class="nav-item">
                     <a class="" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
@@ -89,7 +98,7 @@
                         <span class="nav-link-text" style="color: #f4645f;"></span>
                     </a>
 
-                    <div class="collapse show" id="navbar-examples">
+                    <!--<div class="collapse show" id="navbar-examples">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('profile.edit') }}">
@@ -151,6 +160,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="https://argon-dashboard-laravel.creative-tim.com/docs/components/alerts.html">
                         <i class="ni ni-ui-04"></i> Components -->
+
+
+
                     </a>
                 </li>
             </ul>
