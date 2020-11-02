@@ -13,25 +13,10 @@ class ChatBotController extends APIController
 
         $from = $request->input('From');
         $body = $request->input('Body');
-
-        $client = new \GuzzleHttp\Client();
-
+        
         try {
-            $response = $client->request('GET', "https://api.github.com/users/$body");
-            $githubResponse = json_decode($response->getBody());
-            if ($response->getStatusCode() == 200) {
-                
-                $message = "*Name:* $githubResponse->name\n";
-                $message .= "*Bio:* $githubResponse->bio\n";
-                $message .= "*Lives in:* $githubResponse->location\n";
-                $message .= "*Number of Repos:* $githubResponse->public_repos\n";
-                $message .= "*Followers:* $githubResponse->followers devs\n";
-                $message .= "*Following:* $githubResponse->following devs\n";
-                $message .= "*URL:* \n";
-                $this->sendWhatsAppMessage($message, $from);
-            } else {
-                $this->sendWhatsAppMessage($githubResponse->message, $from);
-            }
+            $message = " My name is Sven \n";
+            $this->sendWhatsAppMessage($message, $from);
         } catch (RequestException $th) {
             $response = json_decode($th->getResponse()->getBody());
             $this->sendWhatsAppMessage($response->message, $from);
