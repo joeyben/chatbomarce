@@ -13,4 +13,8 @@ class Message extends Model
         'message',
         'status',
     ];
+
+    public function getWhatsappAttribute() {
+        return str_replace('whatsapp:', '', $this->attributes['whatsapp']);
+    }
 }

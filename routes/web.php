@@ -27,7 +27,7 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('messages', [App\Http\Controllers\HomeController::class, 'messages'])->name('messages');
     Route::get('users', [App\Http\Controllers\HomeController::class, 'whatsappUsers'])->name('users');
-    Route::get('wuser/{id}', [App\Http\Controllers\HomeController::class, 'whatsappUser']);
+    Route::get('wuser/{id}', [App\Http\Controllers\HomeController::class, 'whatsappUser'])->name('wuser');
     Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);

@@ -18,12 +18,17 @@ class WhatsappUser extends Model
         'last_message' => 'datetime',
     ];
 
-    public function getPrivacyAttribute()
-    {
-        if ($this->attributes['privacy']){
+    public function getPrivacyAttribute() {
+        if (!$this->attributes['privacy_check']) {
+            return 'Noch nicht gesetzt';
+        }else if ($this->attributes['privacy']) {
             return 'Akzeptiert';
         }else{
             return 'Abgelehnt';
         }
+    }
+
+    public function getWhatsappAttribute() {
+        return str_replace('whatsapp:', '', $this->attributes['whatsapp']);
     }
 }

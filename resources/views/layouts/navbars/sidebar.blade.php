@@ -83,14 +83,13 @@
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
 
-                    <a class="nav-link" href="{{ route('messages') }}">
-                        <i class="far fa-envelope text-primary"></i> {{ __('Messages') }}
-                    </a>
-
                     <a class="nav-link" href="{{ route('users') }}">
-                        <i class="fas fa-user text-primary"></i> {{ __('Users') }}
+                        <i class="fas fa-user text-primary"></i> {{ __('Benutzer') }}
                     </a>
 
+                    <a class="nav-link" href="{{ route('messages') }}">
+                        <i class="far fa-envelope text-primary"></i> {{ __('Nachrichten') }}
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
