@@ -14,12 +14,14 @@ return [
     */
     'pages' => [
         'messages' => [
-            'header' => 'Nachtichten',
+            'header' => 'Nachrichten',
             'created_at' => 'erstellt am'
         ],
         'user' => [
             'header' => 'Benutzer',
-            'created_at' => 'erstellt am'
+            'whatsapp' => 'whatsapp',
+            'created_at' => 'erstellt am',
+            ''
         ]
     ]
 
