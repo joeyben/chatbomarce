@@ -24,7 +24,8 @@ class ChatBotController extends APIController
     //$out->writeln($this->whatsappUserRepository->getUserByWhatsapp($whatsappNr));
     public function listenToReplies(Request $request)
     {
-        $whatsappNr = $request->input('From');
+        $originalWhatsappNr = $request->input('From');
+        $whatsappNr = str_replace('whatsapp:', '', $originalWhatsappNr);
         $message = $request->input('Body');
 
         //add new user if not exist
@@ -33,8 +34,9 @@ class ChatBotController extends APIController
         $response = $this->whatsappUserRepository->handleMessages($message, $whatsappNr);
 
         $this->messageRepository->addMessage($message, $whatsappNr);
+
         try {
-            $this->sendWhatsAppMessage($response, $whatsappNr);
+            $this->sendWhatsAppMessage($response, $originalWhatsappNr);
 
         } catch (RequestException $th) {
             $response = json_decode($th->getResponse()->getBody());
