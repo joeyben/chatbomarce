@@ -27,8 +27,4 @@ class WhatsappUser extends Model
             return 'Abgelehnt';
         }
     }
-
-    public function getWhatsappAttribute() {
-        return str_replace('whatsapp:', '', $this->attributes['whatsapp']);
-    }
 }

@@ -3,13 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="15363b94-eb16-489a-9f39-b3b6a516c11f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/V1/ChatBotController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/V1/ChatBotController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/WhatsappUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/WhatsappUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/MessagesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/MessagesRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repository/WhatsappUserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repository/WhatsappUserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/messages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/messages.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/users.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/users.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +202,8 @@
       <workItem from="1603724046540" duration="1000" />
       <workItem from="1603973695002" duration="12755000" />
       <workItem from="1604238237468" duration="11661000" />
-      <workItem from="1604303599090" duration="12354000" />
+      <workItem from="1604303599090" duration="12790000" />
+      <workItem from="1604389762377" duration="1095000" />
     </task>
     <servers />
   </component>
