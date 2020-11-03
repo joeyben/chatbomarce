@@ -15,14 +15,24 @@ return [
     'pages' => [
         'messages' => [
             'header' => 'Nachrichten',
+            'whatsappnr' => 'whatsappnr',
+            'message' => 'Nachricht',
             'created_at' => 'erstellt am'
         ],
         'user' => [
             'header' => 'Benutzer',
             'whatsapp' => 'whatsapp',
-            'created_at' => 'erstellt am',
-            ''
+            'last_message' => 'letzte Nachricht',
+            'privacy' => 'Datenschutz',
+            'created_at' => 'erstellt am'
         ]
-    ]
+    ],
+
+    'views' => [
+        'welcome' => [
+            'title' => 'Welcome to Chatboard Dashboard'
+        ]
+]
 
 ];
+

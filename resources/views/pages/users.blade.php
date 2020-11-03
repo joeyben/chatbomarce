@@ -19,10 +19,10 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Whatsapp</th>
-                                <th scope="col">Letzte Nachricht</th>
-                                <th scope="col">Datenschutz</th>
-                                <th scope="col">Erstellt am</th>
+                                <th scope="col">{{ __('texte.pages.user.whatsapp') }}</th>
+                                <th scope="col">{{ __('texte.pages.user.last_message') }}</th>
+                                <th scope="col">{{ __('texte.pages.user.privacy') }}</th>
+                                <th scope="col">{{ __('texte.pages.user.created_at') }}</th>
                             </tr>
                             </thead>
                             <tbody>

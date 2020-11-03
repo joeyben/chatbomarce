@@ -62,10 +62,10 @@ class WhatsappUserRepository extends BaseRepository
                 break;
             case 'p0':
                 $this->updatePrivacy($whatsappNr);
-                $response = "tut uns leid";
+                $response = __("chatbot.privacy.cancelled");
                 break;
             default:
-                $response = "Hallo Lieber User bitte bestätigen Sie die AGB mit p1 oder lehnen sie mit p0 ab ";
+                $response = __("chatbot.privacy.warning");
                 break;
         }
         return $response;
