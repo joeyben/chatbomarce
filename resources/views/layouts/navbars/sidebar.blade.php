@@ -90,6 +90,11 @@
                     <a class="nav-link" href="{{ route('messages') }}">
                         <i class="far fa-envelope text-primary"></i> {{ __('Nachrichten') }}
                     </a>
+
+                    <a class="nav-link" href="{{ route('q&a') }}">
+                        <i class="far fa-envelope text-primary"></i> {{ __('Q&A') }}
+                    </a>
+
                 </li>
                 <li class="nav-item">
                     <a class="" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">

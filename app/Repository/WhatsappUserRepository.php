@@ -77,19 +77,16 @@ class WhatsappUserRepository extends BaseRepository
 
         switch ($message) {
             case 'q1':
-                $response = "i ist gleich 0";
+                $response = __("chatbot.questions.answer1");
                 break;
             case 'q2':
-                $response = "i ist gleich 1";
+                $response = __("chatbot.questions.answer2");
                 break;
             case 'q3':
-                $response = "i ist gleich 2";
+                $response = __("chatbot.questions.answer3");
                 break;
             default:
-                $response = "Hallo Lieber User antworte mit q1, q2, q3 für die fragen: \n" .
-                    "1.Frage 1 \n" .
-                    "2.Frage 2 \n" .
-                    "3.Frage 3 \n";
+                $response = __("chatbot.questions.default");
                 break;
         }
         return $response;

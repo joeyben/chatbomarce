@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeingkeyToMessagesTable extends Migration
+class AddCurrentTextColumnToWhatsappUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddForeingkeyToMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::table('messages', function (Blueprint $table) {
-            $table->foreign('whatsapp')->references('whatsapp')->on('whatsapp_users');
+        Schema::table('whatsapp_users', function (Blueprint $table) {
+            $table->string('current_text')->after('privacy_check');
         });
     }
 
@@ -25,8 +25,8 @@ class AddForeingkeyToMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::table('messages', function (Blueprint $table) {
-            //
+        Schema::table('whatsapp_users', function (Blueprint $table) {
+            $table->dropColumn('current_text');
         });
     }
 }

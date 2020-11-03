@@ -51,6 +51,11 @@ class HomeController extends Controller
         return view('pages.wuser', ['wuser' => $wuser, 'messages' => $messages]);
     }
 
+    public function questionAnswer(){
+
+}
+
+
     /**
      * Show the application dashboard.
      *
