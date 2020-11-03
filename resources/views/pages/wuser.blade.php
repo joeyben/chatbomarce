@@ -19,8 +19,8 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Message</th>
-                                <th scope="col">Erstellt am</th>
+                                <th scope="col">{{ __('texte.pages.messages.header') }}</th>
+                                <th scope="col">{{ __('texte.pages.messages.created_at') }}</th>
                             </tr>
                             </thead>
                             <tbody>
