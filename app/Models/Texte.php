@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Texte extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'questions',
+        'answers',
+    ];
 }

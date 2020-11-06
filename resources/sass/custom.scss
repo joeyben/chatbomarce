@@ -1,3 +1,8 @@
+.table{
+    td, th{
+        white-space: normal;
+    }
+}
 .login-box{
     margin-top: -200px;
 }
@@ -18,5 +23,20 @@ footer{
     span{
        color: #525f7f;
     }
-
 }
+
+.qa{
+    &.card{
+        .col1{
+            margin-right: 30px;
+        }
+        .btn-primary{
+            margin-bottom:20px;
+        }
+    }
+}
+
+.form-control{
+    height: 100px;
+}
+

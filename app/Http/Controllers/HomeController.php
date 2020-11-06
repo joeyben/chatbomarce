@@ -3,22 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Repository\MessagesRepository;
+use App\Repository\QuestionAnswerRepository;
 use App\Repository\WhatsappUserRepository;
 
 class HomeController extends Controller
 {
     private $messageRepository;
     private $whatsappUserRepository;
+    private $questionAnswerRepository;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(MessagesRepository $messageRepository, WhatsappUserRepository $whatsappUserRepository)
+    public function __construct(MessagesRepository $messageRepository, WhatsappUserRepository $whatsappUserRepository, QuestionAnswerRepository $questionAnswerRepository)
     {
         $this->middleware('auth');
         $this->messageRepository = $messageRepository;
         $this->whatsappUserRepository = $whatsappUserRepository;
+        $this->questionAnswerRepository = $questionAnswerRepository;
     }
 
     /**
@@ -51,7 +54,10 @@ class HomeController extends Controller
         return view('pages.wuser', ['wuser' => $wuser, 'messages' => $messages]);
     }
 
-    public function questionAnswer(){
+    public function questionAnswer()
+    {
+        $textes = $this->questionAnswerRepository->getQuestionAnswer();
+        return view('pages.qa', ['textes' => $textes]);
 
 }
 
