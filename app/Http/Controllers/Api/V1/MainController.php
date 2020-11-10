@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Api\V1;
 
 
+use Illuminate\Http\Request;
+use App\Repository\QuestionAnswerRepository;
+
 class MainController extends APIController
 {
     /**
@@ -10,8 +13,10 @@ class MainController extends APIController
      *
      * @return void
      */
-    public function __construct()
+    private $questionAnswerRepository;
+    public function __construct(QuestionAnswerRepository $questionAnswerRepository)
     {
+        $this->questionAnswerRepository = $questionAnswerRepository;
     }
 
 
@@ -20,12 +25,11 @@ class MainController extends APIController
      *
      * @return \Illuminate\View\View
      */
-    public function infos()
+    public function qa(Request $request)
     {
-        try {
-            return "yo yo yo ";
-        } catch (\Exception $e) {
-            return $this->respondWithError($e);
-        }
+        $question = $request->get('question');
+        $answer = $request->get('answer');
+        $this->questionAnswerRepository->addQuestionAnswer($question, $answer);
+        return $question;
     }
 }

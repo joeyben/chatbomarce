@@ -57,7 +57,8 @@ class HomeController extends Controller
     public function questionAnswer()
     {
         $textes = $this->questionAnswerRepository->getQuestionAnswer();
-        return view('pages.qa', ['textes' => $textes]);
+        $class = "qa";
+        return view('pages.qa', ['textes' => $textes, 'class' => $class]);
 
 }
 
