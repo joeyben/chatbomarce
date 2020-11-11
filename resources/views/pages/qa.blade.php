@@ -14,28 +14,6 @@
                                    Hinzufügen
                                 </button>
                             </div>
-                            <div class="modal fade" id="questionAnswerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title1" id="exampleModalLabel">Hinzufügen</h5>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="/action_page.php">
-                                                <label for="fname">Frage:</label><br>
-                                                <input type="text" rows="5" cols="25" class="form-control" placeholder="Default input"><br>
-                                                <label for="lname">Antwort:</label><br>
-                                                <input type="text" class="form-control" placeholder="Default input">
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
-                                            <button type="button" class="btn btn-primary">Speichern</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <!--<div class="col text-right">
                               <a href="#!" class="btn btn-sm btn-primary">See all</a>
                             </div>-->
@@ -64,31 +42,10 @@
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#questionAnswerModal">
                                             Editieren
                                         </button>
-                                        <div class="modal fade" id="questionAnswerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Editieren</h5>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form action="/action_page.php">
-                                                            <label for="fname">Frage:</label><br>
-                                                            <input type="text" rows="5" cols="25" class="form-control" placeholder="Default input"><br>
-                                                            <label for="lname">Antwort:</label><br>
-                                                            <input type="text" class="form-control" placeholder="Default input">
-                                                        </form>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
-                                                        <button type="button" class="btn btn-primary">Speichern</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#questionAnswerModal">
                                             Löschen
-
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -99,4 +56,7 @@
             </div>
         </div>
     </div>
+
+    @include('pages.modals.add-qa')
+    @include('pages.modals.edit-qa')
 @endsection

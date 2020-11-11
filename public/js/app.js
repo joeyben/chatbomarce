@@ -49897,9 +49897,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Applications/XAMPP/xamppfiles/htdocs/chatbot/chatbomarce/resources/js/app.js */"./resources/js/app.js");
-__webpack_require__(/*! /Applications/XAMPP/xamppfiles/htdocs/chatbot/chatbomarce/resources/sass/app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! /Applications/XAMPP/xamppfiles/htdocs/chatbot/chatbomarce/resources/sass/custom.scss */"./resources/sass/custom.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/chatbot/chatbot/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Applications/MAMP/htdocs/chatbot/chatbot/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/chatbot/chatbot/resources/sass/custom.scss */"./resources/sass/custom.scss");
 
 
 /***/ })
