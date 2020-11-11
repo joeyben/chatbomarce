@@ -24,4 +24,5 @@ Route::group(['namespace' => 'App\Http\Controllers\Api\V1', 'prefix' => 'v1', 'a
     });
 
     Route::post('/chat-bot', 'ChatBotController@listenToReplies');
+    Route::post('/qa', 'MainController@qa');
 });

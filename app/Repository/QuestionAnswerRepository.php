@@ -12,4 +12,13 @@ class QuestionAnswerRepository extends BaseRepository
     {
         return $this->query()->get();
     }
+
+    public function addQuestionAnswer($question, $answer)
+    {
+        $texte = new Texte();
+        $texte->questions = $question;
+        $texte->answers = $answer;
+        return $texte->save();
+
+    }
 }

@@ -25,14 +25,20 @@ return [
             'last_message' => 'letzte Nachricht',
             'privacy' => 'Datenschutz',
             'created_at' => 'erstellt am'
+        ],
+
+        'qa' => [
+            'header' => 'Fragen und Anworten',
+            'questions' => 'Fragen',
+            'answers' => 'Antworten',
+            'actions' => 'Aktionen'
         ]
-    ],
+        ],
 
     'views' => [
         'welcome' => [
             'title' => 'Welcome to Chatboard Dashboard'
         ]
-]
-
+    ],
 ];
 
