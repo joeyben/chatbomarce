@@ -22,36 +22,7 @@
                     </div>
                     <div class="table-responsive">
                         <!-- Projects table -->
-                        <table class="table align-items-center table-flush">
-                            <thead class="thead-light">
-                            <tr>
-                                <th scope="col">{{ __('texte.pages.qa.questions') }}</th>
-                                <th scope="col">{{ __('texte.pages.qa.answers') }}</th>
-                                <th scope="col">{{ __('texte.pages.qa.actions') }}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($textes as $text)
-                                <tr>
-                                    <td scope="row">
-                                        {{ $text->questions }}
-                                    </td>
-                                    <td>
-                                        {{ $text->answers }}
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editqaModal">
-                                            Editieren
-                                        </button>
-
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#questionAnswerModal">
-                                            Löschen
-
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                        <list-component ref="list"></list-component>
                     </div>
                 </div>
             </div>

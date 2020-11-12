@@ -23,13 +23,23 @@ class MainController extends APIController
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\View\View
+     * @return boolean
      */
     public function qa(Request $request)
     {
         $question = $request->get('question');
         $answer = $request->get('answer');
-        $this->questionAnswerRepository->addQuestionAnswer($question, $answer);
-        return $question;
+        return $this->questionAnswerRepository->addQuestionAnswer($question, $answer);
+    }
+
+    /**
+     *
+     *
+     * @return array
+     */
+    public function getQA()
+    {
+        $textes = $this->questionAnswerRepository->getQuestionAnswer();
+        return $textes;
     }
 }

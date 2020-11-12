@@ -6,7 +6,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Hinzufügen</h5>
                 </div>
                 <div class="modal-body">
-                    <form action="/action_page.php" @submit.stop.prevent="handleSubmit">
+                    <form action="#" @submit.stop.prevent="handleSubmit">
                         <label for="questionTextarea" >Frage:</label><br>
                         <b-form-textarea
                             id="questionTextarea"
@@ -22,7 +22,7 @@
                             rows="3"
                         ></b-form-textarea>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
-                        <button type="submit" class="btn btn-primary" data-backdrop="false">Speichern</button>
+                        <button type="submit" class="btn btn-primary" data-backdrop="false">Hinzufügen</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -31,8 +31,6 @@
             </div>
         </div>
     </div>
-
-
 </template>
 
 <script>
@@ -41,7 +39,7 @@ export default {
     data() {
         return {
             questionState: '',
-            answerState: '',
+            answerState: ''
         }
     },
     methods: {
@@ -61,7 +59,8 @@ export default {
                 question: this.questionState,
                 answer: this.answerState
             }).then(response => {
-                $('#addqaModal').modal('hide')
+                $('#addqaModal').modal('hide');
+                this.$root.$refs.list.getList();
             }).catch(e => {
                 console.log(e);
             });

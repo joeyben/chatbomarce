@@ -21,6 +21,7 @@ require('./bootstrap');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.use(BootstrapVue);
+Vue.component('list-component', require('./components/ListComponent.vue').default);
 Vue.component('add-component', require('./components/AddComponent.vue').default);
 Vue.component('edit-component', require('./components/EditComponent.vue').default);
 
