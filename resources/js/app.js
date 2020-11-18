@@ -24,6 +24,9 @@ Vue.use(BootstrapVue);
 Vue.component('list-component', require('./components/ListComponent.vue').default);
 Vue.component('add-component', require('./components/AddComponent.vue').default);
 Vue.component('edit-component', require('./components/EditComponent.vue').default);
+Vue.component('list-feedback-component', require('./components/Feedback/ListFeedbackComponent.vue').default);
+Vue.component('add-feedback-component', require('./components/Feedback/AddFeedbackComponent.vue').default);
+Vue.component('edit-feedback-component', require('./components/Feedback/EditFeedbackComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

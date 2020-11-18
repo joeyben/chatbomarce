@@ -95,6 +95,10 @@
                         <i class="far fa-envelope text-primary"></i> {{ __('Q&A') }}
                     </a>
 
+                    <a class="nav-link" href="{{ route('feedback') }}">
+                        <i class="far fa-envelope text-primary"></i> {{ __('Feedback') }}
+                    </a>
+
                 </li>
                 <li class="nav-item">
                     <a class="" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">

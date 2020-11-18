@@ -3,26 +3,40 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Editieren</h5>
                 </div>
                 <div class="modal-body">
                     <form action="/action_page.php" @submit.stop.prevent="handleSubmit">
-                        <label for="questionTextarea" >Frage:</label><br>
+                        <label for="questionTextarea" class="label_textarea" >Frage:</label><br>
                         <b-form-textarea
                             id="questionTextarea"
                             v-model="questionState"
                             placeholder="Enter something..."
                             rows="3"
                         ></b-form-textarea>
-                        <label for="answerTextarea">Antwort:</label><br>
+                        <label for="answerTextarea" class="label_textarea">Antwort:</label><br>
                         <b-form-textarea
                             id="answerTextarea"
                             v-model="answerState"
                             placeholder="Enter something..."
                             rows="3"
                         ></b-form-textarea>
+                        <label for="userInputTextarea" class="label_textarea">Benutzereingabe:</label><br>
+                        <b-form-input
+                            id="userInputTextarea"
+                            v-model="userInputState"
+                            placeholder="Enter your name"
+                        ></b-form-input>
+                        <label for="positionTextarea" class="label_textarea">Position:</label><br>
+                        <b-form-input
+                            id="positionTextarea"
+                            v-model="positionState"
+                            placeholder="Enter your name"
+                        ></b-form-input>
+                        <div class="buttons_form">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
                         <button type="submit" class="btn btn-primary">Speichern</button>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -42,6 +56,8 @@
             return {
                 questionState: '',
                 answerState: '',
+                userInputState: '',
+                positionState: '',
             }
         },
         methods: {
@@ -57,9 +73,11 @@
                     this.$bvModal.hide('modal-prevent-closing')
                 })*/
 
-                axios.post('api/v1/qa', {
+                axios.post('api/v1/addqa', {
                     question: this.questionState,
-                    answer: this.answerState
+                    answer: this.answerState,
+                    user_input: this.userInputState,
+                    position: this.positionState
                 }).then(response => {
                     this.$bvModal.hide('exampleModalLabel')
                 }).catch(e => {

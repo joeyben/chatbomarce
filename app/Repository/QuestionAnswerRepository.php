@@ -10,14 +10,16 @@ class QuestionAnswerRepository extends BaseRepository
 
     public function getQuestionAnswer()
     {
-        return $this->query()->get();
+        return $this->query()->orderBy('id', 'DESC')->get();
     }
 
-    public function addQuestionAnswer($question, $answer)
+    public function addQuestionAnswer($question, $answer, $user_input, $position)
     {
         $texte = new Texte();
         $texte->questions = $question;
         $texte->answers = $answer;
+        $texte->user_input = $user_input;
+        $texte->position = $position;
         return $texte->save();
 
     }

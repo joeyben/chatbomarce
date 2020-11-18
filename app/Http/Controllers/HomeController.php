@@ -5,23 +5,26 @@ namespace App\Http\Controllers;
 use App\Repository\MessagesRepository;
 use App\Repository\QuestionAnswerRepository;
 use App\Repository\WhatsappUserRepository;
+use App\Repository\FeedbackRepository;
 
 class HomeController extends Controller
 {
     private $messageRepository;
     private $whatsappUserRepository;
     private $questionAnswerRepository;
+    private $feedbackRepository;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(MessagesRepository $messageRepository, WhatsappUserRepository $whatsappUserRepository, QuestionAnswerRepository $questionAnswerRepository)
+    public function __construct(MessagesRepository $messageRepository, WhatsappUserRepository $whatsappUserRepository, QuestionAnswerRepository $questionAnswerRepository, FeedbackRepository $feedbackRepository )
     {
         $this->middleware('auth');
         $this->messageRepository = $messageRepository;
         $this->whatsappUserRepository = $whatsappUserRepository;
         $this->questionAnswerRepository = $questionAnswerRepository;
+        $this->feedbackRepository = $feedbackRepository;
     }
 
     /**
@@ -60,8 +63,13 @@ class HomeController extends Controller
         $class = "qa";
         return view('pages.qa', ['textes' => $textes, 'class' => $class]);
 
-}
+   }
 
+    public function feedback()
+    {
+        $feedback = $this->feedbackRepository->getFeedback();
+        return view('pages.feedback', ['feedback' => $feedback]);
+    }
 
     /**
      * Show the application dashboard.

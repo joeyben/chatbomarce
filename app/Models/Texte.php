@@ -11,5 +11,7 @@ class Texte extends Model
     protected $fillable = [
         'questions',
         'answers',
+        'user_input',
+        'position',
     ];
 }

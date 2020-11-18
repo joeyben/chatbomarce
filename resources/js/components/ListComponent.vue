@@ -3,17 +3,25 @@
     <thead class="thead-light">
     <tr>
         <th scope="col">Fragen</th>
-        <th scope="col">Antworte</th>
-        <th scope="col">Aktion</th>
+        <th scope="col">Antworten</th>
+        <th scope="col">Eingabe</th>
+        <th scope="col">Position</th>
+        <th scope="col">&nbsp;</th>
     </tr>
     </thead>
     <tbody>
     <tr v-for="item in qas">
-        <td scope="row">
+        <td>
             {{ item.questions }}
         </td>
         <td>
             {{ item.answers }}
+        </td>
+        <td>
+            {{ item.user_input }}
+        </td>
+        <td>
+            {{ item.position }}
         </td>
         <td>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editqaModal">

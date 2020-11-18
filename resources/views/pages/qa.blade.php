@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <add-component></add-component>
+        <add-feedback-component></add-feedback-component>
         <edit-component></edit-component>
     </div>
 @endsection
