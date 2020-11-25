@@ -37,3 +37,11 @@
   margin-top: 30px;
 }
 
+/***** Dropdown menu fix *******/
+
+.dropdown.open > .dropdown-menu {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
+

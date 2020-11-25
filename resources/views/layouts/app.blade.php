@@ -45,6 +45,19 @@
 
         <!-- Argon JS -->
         <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+        <script type="application/javascript">
+            $('li.dropdown a').on('click', function (event) {
+                $(this).parent().toggleClass('open');
+            });
 
+            $('body').on('click', function (e) {
+                if (!$('li.dropdown').is(e.target)
+                    && $('li.dropdown').has(e.target).length === 0
+                    && $('.open').has(e.target).length === 0
+                ) {
+                    $('li.dropdown').removeClass('open');
+                }
+            });
+        </script>
     </body>
 </html>

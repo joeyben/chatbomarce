@@ -10,7 +10,7 @@ class QuestionAnswerRepository extends BaseRepository
 
     public function getQuestionAnswer()
     {
-        return $this->query()->orderBy('id', 'DESC')->get();
+        return $this->query()->orderBy('position', 'ASC')->get();
     }
 
     public function addQuestionAnswer($question, $answer, $user_input, $position)
@@ -22,5 +22,10 @@ class QuestionAnswerRepository extends BaseRepository
         $texte->position = $position;
         return $texte->save();
 
+    }
+
+    public function getQAByKeyword($keyword)
+    {
+        return $this->query()->where('user_input', 'LIKE', '%'.$keyword.'%')->get();
     }
 }

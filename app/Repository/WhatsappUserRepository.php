@@ -10,15 +10,27 @@ class WhatsappUserRepository extends BaseRepository
 {
     const MODEL = WhatsappUser::class;
 
+    private $questionAnswerRepository;
+    /**
+     * Create a new controller instance.
+     * @param $questionAnswerRepository
+     * @return void
+     */
+    public function __construct(QuestionAnswerRepository $questionAnswerRepository)
+    {
+        $this->questionAnswerRepository = $questionAnswerRepository;
+    }
 
     public function addUser($whatsappNr)
     {
+
         if (!$this->countUserByWhatsapp($whatsappNr)) {
             $whatsapp = new WhatsappUser();
             $whatsapp->whatsapp = $whatsappNr;
             $whatsapp->privacy = 1;
-            $whatsapp->privacy_check = 0;
+            $whatsapp->privacy_check = 1;
             $whatsapp->last_message = \Carbon\Carbon::now();
+            $whatsapp->current_text = "";
             $whatsapp->save();
             return true;
         }
@@ -42,14 +54,7 @@ class WhatsappUserRepository extends BaseRepository
 
     public function handleMessages($message, $whatsappNr)
     {
-        $privacy = $this->handlePrivacyCheck($whatsappNr);
-        if($privacy === "Abgelehnt"){
-            return "sorry,bye";
-        } elseif ($privacy === "Akzeptiert") {
-            return $this->handleQuestions($message);
-        }else {
-            return $this->handlePrivacy($message, $whatsappNr);
-        }
+        return $this->handleQuestions($message);
     }
 
     public function handlePrivacy($message, $whatsappNr){
@@ -74,8 +79,13 @@ class WhatsappUserRepository extends BaseRepository
     }
     public function handleQuestions($message){
         $response = "";
+        $QAFromKeyword = $this->questionAnswerRepository->getQAByKeyword($message);
 
-        switch ($message) {
+        /*$out = new \Symfony\Component\Console\Output\ConsoleOutput();
+        $out->writeln($QAFromKeyword[0]['answers']);
+        die();*/
+
+        /*switch ($message) {
             case 'q1':
                 $response = __("chatbot.questions.answer1");
                 break;
@@ -88,8 +98,8 @@ class WhatsappUserRepository extends BaseRepository
             default:
                 $response = __("chatbot.questions.default");
                 break;
-        }
-        return $response;
+        }*/
+        return isset($QAFromKeyword[0]) ? $QAFromKeyword[0]['answers'] : __("chatbot.questions.default");
     }
 
     public function getWhatsappUsers()
