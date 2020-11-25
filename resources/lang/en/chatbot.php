@@ -5,7 +5,6 @@ return [
         'cancelled' => 'tut uns Leid',
         'warning' => 'Hallo Lieber User bitte bestätigen Sie die AGB mit p1 oder lehnen sie mit p0 ab'
     ],
-
     'questions' => [
         'answer1' => 'Antwort auf Frage 1',
         'answer2' => 'Antwort auf Frage 2',
@@ -14,5 +13,6 @@ return [
                     "1.Frage 1 \n" .
                     "2.Frage 2 \n" .
                     "3.Frage 3 \n"
-]
+    ],
+    'finalMessage' => '*Goodbye Message* The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using'
 ];

@@ -9,8 +9,8 @@
         </thead>
         <tbody>
         <tr v-for="item in feedback">
-            <td>
-                {{ item.question }}
+            <td v-html="item.question">
+
             </td>
             <td>
                 {{ item.position }}

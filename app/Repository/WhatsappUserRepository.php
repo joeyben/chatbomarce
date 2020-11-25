@@ -112,6 +112,11 @@ class WhatsappUserRepository extends BaseRepository
         return $this->query()->where('whatsapp', $whatsappNr)->count();
     }
 
+    public function getStatusByWhatsapp($whatsappNr)
+    {
+        return $this->query()->where('whatsapp', $whatsappNr)->first()->status;
+    }
+
     public function getUserByWhatsapp($whatsappNr)
     {
         return $this->query()->where('whatsapp', $whatsappNr)->first();
