@@ -87,7 +87,7 @@
                         <i class="fas fa-user text-primary"></i> {{ __('Benutzer') }}
                     </a>
 
-                    <a class="nav-link" href="{{ route('messages') }}">
+                    <a class="nav-link" href="{{ route('nachrichten') }}">
                         <i class="far fa-envelope text-primary"></i> {{ __('Nachrichten') }}
                     </a>
 
@@ -97,6 +97,10 @@
 
                     <a class="nav-link" href="{{ route('feedback') }}">
                         <i class="far fa-envelope text-primary"></i> {{ __('Feedback') }}
+                    </a>
+
+                    <a class="nav-link" href="{{ route('messages') }}">
+                        <i class="far fa-envelope text-primary"></i> {{ __('Log') }}
                     </a>
 
                 </li>

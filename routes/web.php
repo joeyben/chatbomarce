@@ -25,6 +25,7 @@ Auth::routes();
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
+	Route::get('nachrichten', [App\Http\Controllers\HomeController::class, 'nachrichten'])->name('nachrichten');
     Route::get('messages', [App\Http\Controllers\HomeController::class, 'messages'])->name('messages');
     Route::get('users', [App\Http\Controllers\HomeController::class, 'whatsappUsers'])->name('users');
     Route::get('qa', [App\Http\Controllers\HomeController::class, 'questionAnswer'])->name('q&a');

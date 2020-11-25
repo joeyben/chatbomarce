@@ -27,7 +27,7 @@ Vue.component('edit-component', require('./components/EditComponent.vue').defaul
 Vue.component('list-feedback-component', require('./components/Feedback/ListFeedbackComponent.vue').default);
 Vue.component('add-feedback-component', require('./components/Feedback/AddFeedbackComponent.vue').default);
 Vue.component('edit-feedback-component', require('./components/Feedback/EditFeedbackComponent.vue').default);
-
+Vue.component('list-nachrichten-component', require('./components/Nachrichten/ListNachrichtenComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
