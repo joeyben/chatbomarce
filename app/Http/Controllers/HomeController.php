@@ -6,6 +6,8 @@ use App\Repository\MessagesRepository;
 use App\Repository\QuestionAnswerRepository;
 use App\Repository\WhatsappUserRepository;
 use App\Repository\FeedbackRepository;
+use App\Repository\NachrichtenRepository;
+
 
 class HomeController extends Controller
 {
@@ -13,18 +15,21 @@ class HomeController extends Controller
     private $whatsappUserRepository;
     private $questionAnswerRepository;
     private $feedbackRepository;
+    private $nachrichtenRepository;
+    
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(MessagesRepository $messageRepository, WhatsappUserRepository $whatsappUserRepository, QuestionAnswerRepository $questionAnswerRepository, FeedbackRepository $feedbackRepository )
+    public function __construct(MessagesRepository $messageRepository, WhatsappUserRepository $whatsappUserRepository, QuestionAnswerRepository $questionAnswerRepository, FeedbackRepository $feedbackRepository, NachrichtenRepository $nachrichtenRepository )
     {
         $this->middleware('auth');
         $this->messageRepository = $messageRepository;
         $this->whatsappUserRepository = $whatsappUserRepository;
         $this->questionAnswerRepository = $questionAnswerRepository;
         $this->feedbackRepository = $feedbackRepository;
+        $this->nachrichtenRepository = $nachrichtenRepository;
     }
 
     /**
@@ -79,9 +84,16 @@ class HomeController extends Controller
     public function infos()
     {
         try {
-            return $this->responseJson("yo yo yo ");
-        } catch (\Exception $e) {
+        return $this->responseJson("yo yo yo ");
+        }catch (\Exception $e) {
             return $this->respondWithError($e);
         }
     }
+
+    public function nachrichten()
+    {
+        $nachrichten = $this->nachrichtenRepository->getNachrichten();
+        return view('pages.nachrichten', ['nachrichten' => $nachrichten]);
+    }
 }
+

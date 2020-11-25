@@ -6,6 +6,9 @@ namespace App\Http\Controllers\Api\V1;
 use Illuminate\Http\Request;
 use App\Repository\QuestionAnswerRepository;
 use App\Repository\FeedbackRepository;
+use App\Repository\NachrichtenRepository;
+
+
 
 
 class MainController extends APIController
@@ -17,10 +20,12 @@ class MainController extends APIController
      */
     private $feedbackRepository;
     private $questionAnswerRepository;
-    public function __construct(QuestionAnswerRepository $questionAnswerRepository, FeedbackRepository $feedbackRepository )
+    private $NachrichtenRepository;
+    public function __construct(QuestionAnswerRepository $questionAnswerRepository, FeedbackRepository $feedbackRepository, NachrichtenRepository $nachrichtenRepository )
     {
         $this->questionAnswerRepository = $questionAnswerRepository;
         $this->feedbackRepository = $feedbackRepository;
+        $this->nachrichtenRepository = $nachrichtenRepository;
     }
 
 
@@ -59,5 +64,17 @@ class MainController extends APIController
     public function getFeedback()
     {
         return $this->feedbackRepository->getFeedback();
+    }
+
+     public function addNachricht(Request $request)
+    {
+        $message = $request->get('message');
+        $position = $request->get('position');
+        return $this->nachrichtenRepository->addNachrichten($message, $position);
+    }
+
+    public function getNachrichten()
+    {
+        return $this->nachrichtenRepository->getNachrichten();
     }
 }

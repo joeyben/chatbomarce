@@ -28,4 +28,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Api\V1', 'prefix' => 'v1', 'a
     Route::get('/getQA', 'MainController@getQA');
     Route::post('/addfb', 'MainController@addfb');
     Route::get('/getfeedback', 'MainController@getFeedback');
+    Route::get('/addnachricht', 'MainController@addNachricht');
+    Route::get('/getNachricht', 'MainController@getNachrichten');
 });
