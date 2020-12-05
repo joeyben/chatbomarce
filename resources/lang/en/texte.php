@@ -19,6 +19,12 @@ return [
             'message' => 'Nachricht',
             'created_at' => 'erstellt am'
         ],
+        'usersfeedback' => [
+            'header' => 'Feedback log',
+            'question' => 'Feedbackfrage',
+            'rating' => 'Bewertung',
+            'user' => 'Benutzer'
+        ],
         'user' => [
             'header' => 'Benutzer',
             'whatsapp' => 'whatsapp',

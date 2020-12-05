@@ -52,9 +52,9 @@ class WhatsappUserRepository extends BaseRepository
         }
     }
 
-    public function handleMessages($message, $whatsappNr)
+    public function handleMessages($message, $whatsappNr, $newUser)
     {
-        return $this->handleQuestions($message);
+        return $this->handleQuestions($message, $newUser);
     }
 
     public function handlePrivacy($message, $whatsappNr){
@@ -77,34 +77,21 @@ class WhatsappUserRepository extends BaseRepository
 
 
     }
-    public function handleQuestions($message){
+    public function handleQuestions($message, $newUser){
         $response = "";
         $QAFromKeyword = $this->questionAnswerRepository->getQAByKeyword($message);
 
-        /*$out = new \Symfony\Component\Console\Output\ConsoleOutput();
-        $out->writeln($QAFromKeyword[0]['answers']);
-        die();*/
-
-        /*switch ($message) {
-            case 'q1':
-                $response = __("chatbot.questions.answer1");
-                break;
-            case 'q2':
-                $response = __("chatbot.questions.answer2");
-                break;
-            case 'q3':
-                $response = __("chatbot.questions.answer3");
-                break;
-            default:
-                $response = __("chatbot.questions.default");
-                break;
-        }*/
-        return isset($QAFromKeyword[0]) ? $QAFromKeyword[0]['answers'] : __("chatbot.questions.default");
+        return isset($QAFromKeyword[0]) ? $QAFromKeyword[0]['answers'] : ($newUser ? "" : __("chatbot.questions.nothing"));
     }
 
     public function getWhatsappUsers()
     {
         return $this->query()->orderBy('created_at', 'desc')->get();
+    }
+
+    public function getWhatsappUsersByStatus($status)
+    {
+        return $this->query()->where('status', $status)->orderBy('created_at', 'desc')->get();
     }
 
     public function countUserByWhatsapp($whatsappNr)
@@ -130,6 +117,11 @@ class WhatsappUserRepository extends BaseRepository
     public function updatePrivacy($whatsappNr, $privacy = 0)
     {
         return $this->query()->where('whatsapp', $whatsappNr)->update(['privacy' => $privacy, 'privacy_check' => 1]);
+    }
+
+    public function updateStatus($whatsappNr, $status = 1)
+    {
+        return $this->query()->where('whatsapp', $whatsappNr)->update(['status' => $status]);
     }
 
     public function getWhatsappUser($id)

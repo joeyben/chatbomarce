@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Repository\FeedbackRepository;
 use App\Repository\MessagesRepository;
+use App\Repository\NachrichtenRepository;
 use App\Repository\WhatsappUserRepository;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
@@ -14,34 +15,55 @@ class ChatBotController extends APIController
     private $whatsappUserRepository;
     private $messageRepository;
     private $feedbackRepository;
+    private $nachrichtenRepository;
     /**
      * ChatBotController constructor.
      */
-    public function __construct(WhatsappUserRepository $whatsappUserRepository, MessagesRepository $messageRepository, FeedbackRepository $feedbackRepository)
+    public function __construct(WhatsappUserRepository $whatsappUserRepository,
+                                MessagesRepository $messageRepository, FeedbackRepository $feedbackRepository,
+                                NachrichtenRepository $nachrichtenRepository)
     {
         $this->whatsappUserRepository = $whatsappUserRepository;
         $this->messageRepository = $messageRepository;
         $this->feedbackRepository = $feedbackRepository;
+        $this->nachrichtenRepository = $nachrichtenRepository;
     }
     //$out = new \Symfony\Component\Console\Output\ConsoleOutput();
     //$out->writeln($this->whatsappUserRepository->getUserByWhatsapp($whatsappNr));
     public function listenToReplies(Request $request)
     {
-        $originalWhatsappNr = $request->input('From');
-        $whatsappNr = str_replace('whatsapp:', '', $originalWhatsappNr);
+        $originalWhatsappNr = $request->input('From');// whatsapp:+1234143443
+        $whatsappNr = str_replace('whatsapp:', '', $originalWhatsappNr); //+1234143443
         $message = $request->input('Body');
 
         //add new user if not exist
-        $this->whatsappUserRepository->addUser($whatsappNr);
+        $newUser = $this->whatsappUserRepository->addUser($whatsappNr);
         $userStatus = $this->whatsappUserRepository->getStatusByWhatsapp($whatsappNr);
+        if($newUser){
+            try {
+                $this->sendWhatsAppMessage(__('chatbot.welcome'), $originalWhatsappNr);
 
+            } catch (RequestException $th) {
+                $response = json_decode($th->getResponse()->getBody());
+                $this->sendWhatsAppMessage($response->message, $whatsappNr);
+            }
+        }
         switch ($userStatus) {
             case 0:
                 break;
             case 1:
-                $response = $this->whatsappUserRepository->handleMessages($message, $whatsappNr);
+                if($message === "halt"){
+                    $this->whatsappUserRepository->updateStatus($whatsappNr, 0);
+                    $response = __('chatbot.stop');
+                }else if($message === "next"){
+                    $user = $this->whatsappUserRepository->getUserByWhatsapp($whatsappNr);
+                    $nextNachricht = $this->nachrichtenRepository->getCurrentNachricht($user->id);
+                    $this->nachrichtenRepository->sendNachrichtToUser($nextNachricht, $user);
+                }else{
+                    $response = $this->whatsappUserRepository->handleMessages($message, $whatsappNr, $newUser);
 
-                $this->messageRepository->addMessage($message, $whatsappNr);
+                    $this->messageRepository->addMessage($message, $whatsappNr);
+                }
 
                 try {
                     $this->sendWhatsAppMessage($response, $originalWhatsappNr);
@@ -57,10 +79,6 @@ class ChatBotController extends APIController
                 $this->sendWhatsAppMessage($response, $originalWhatsappNr);
                 break;
         }
-
-        /*$out = new \Symfony\Component\Console\Output\ConsoleOutput();
-        $out->writeln($userStatus);
-        die();*/
 
 
         return;

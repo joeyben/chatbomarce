@@ -99,6 +99,10 @@
                         <i class="far fa-envelope text-primary"></i> {{ __('Feedback') }}
                     </a>
 
+                    <a class="nav-link" href="{{ route('feedbackLog') }}">
+                        <i class="far fa-envelope text-primary"></i> {{ __('Feedback Log') }}
+                    </a>
+
                     <a class="nav-link" href="{{ route('messages') }}">
                         <i class="far fa-envelope text-primary"></i> {{ __('Log') }}
                     </a>

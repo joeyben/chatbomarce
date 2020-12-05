@@ -48,4 +48,9 @@ class FeedbackRepository extends BaseRepository
         $ufeedback->rating = $messageInt;
         return $ufeedback->save();
     }
+
+    public function getUsersFeedback()
+    {
+        return UserFeedback::query()->get();
+    }
 }

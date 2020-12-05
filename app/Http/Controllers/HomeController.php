@@ -16,7 +16,7 @@ class HomeController extends Controller
     private $questionAnswerRepository;
     private $feedbackRepository;
     private $nachrichtenRepository;
-    
+
     /**
      * Create a new controller instance.
      *
@@ -40,7 +40,8 @@ class HomeController extends Controller
     public function index()
     {
         $page = "dashboard";
-        return view('dashboard', ['page' => $page]);
+        $messageCount = $this->messageRepository->countMessages();
+        return view('dashboard', ['page' => $page, 'messageCount' => $messageCount]);
     }
 
     public function messages()
@@ -94,6 +95,12 @@ class HomeController extends Controller
     {
         $nachrichten = $this->nachrichtenRepository->getNachrichten();
         return view('pages.nachrichten', ['nachrichten' => $nachrichten]);
+    }
+
+    public function feedbackLog()
+    {
+        $usersFeedback = $this->feedbackRepository->getUsersFeedback();
+        return view('pages.feedbacklog', ['usersFeedback' => $usersFeedback]);
     }
 }
 

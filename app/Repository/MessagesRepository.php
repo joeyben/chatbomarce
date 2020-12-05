@@ -42,6 +42,9 @@ class MessagesRepository extends BaseRepository
     public function getMessages(){
         return $this->query()->orderBy('created_at', 'desc')->get();
     }
+    public function countMessages(){
+        return $this->query()->count();
+    }
 
     public function getMessagesByWhatsapp($whatsappnr){
         return $this->query()->where('whatsapp', $whatsappnr)->get();

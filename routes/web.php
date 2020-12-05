@@ -39,5 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
 	 Route::get('table-list', function () {return view('pages.tables');})->name('table');
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
     Route::get('feedback', [App\Http\Controllers\HomeController::class, 'feedback'])->name('feedback');
+    Route::get('feedbackLog', [App\Http\Controllers\HomeController::class, 'feedbackLog'])->name('feedbackLog');
+
 });
 

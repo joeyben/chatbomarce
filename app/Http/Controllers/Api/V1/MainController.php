@@ -20,7 +20,7 @@ class MainController extends APIController
      */
     private $feedbackRepository;
     private $questionAnswerRepository;
-    private $NachrichtenRepository;
+    private $nachrichtenRepository;
     public function __construct(QuestionAnswerRepository $questionAnswerRepository, FeedbackRepository $feedbackRepository, NachrichtenRepository $nachrichtenRepository )
     {
         $this->questionAnswerRepository = $questionAnswerRepository;

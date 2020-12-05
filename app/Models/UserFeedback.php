@@ -13,4 +13,14 @@ class UserFeedback extends Model
         'feedback_id',
         'rating',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\WhatsappUser');
+    }
+
+    public function feedback()
+    {
+        return $this->belongsTo('App\Models\Feedback');
+    }
 }
